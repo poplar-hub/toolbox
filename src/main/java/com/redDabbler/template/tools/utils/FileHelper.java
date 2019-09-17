@@ -5,6 +5,9 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 public class FileHelper {
     private FileHelper() {
         throw new UnsupportedOperationException();
@@ -17,7 +20,12 @@ public class FileHelper {
      */
     public static InputStream getInputStream(String filePath)throws FileNotFoundException {
         File file = new File(filePath);
-//        Preconditions.checkArgument(file.exists() && file.isFile(),"文件不存在");
+        if (!file.exists()){
+            throw new FileNotFoundException();
+        }
+        if(file.isDirectory()){
+            throw new IllegalArgumentException("file is Directory");
+        }
         InputStream inputStream  = new FileInputStream(file);
         return inputStream;
     }
@@ -55,9 +63,11 @@ public class FileHelper {
      * @param file
      * @return
      */
-    public static List<File> listFiles(File file){
-  //      Preconditions.checkArgument(file.exists(),"文件不存在");
-        List<File> files = new ArrayList<>();
+    public static List<File> listFiles(File file)throws FileNotFoundException{
+        if (!file.exists()){
+            throw new FileNotFoundException();
+        }
+        List<File> files = new ArrayList();
         recursionFiles(file,files);
         return files;
     }

@@ -1,6 +1,8 @@
 package com.redDabbler.template.tools.utils;
 
 
+import org.apache.commons.lang3.text.WordUtils;
+
 import java.util.Map;
 import java.util.Properties;
 
@@ -11,9 +13,9 @@ public class StringHelper {
     }
 
 
-////    public static String captial(String str){
-//        return WordUtils.capitalize(str,'_');
-//    }
+    public static String captial(String str){
+        return WordUtils.capitalize(str,'_');
+    }
 
 
     /**
