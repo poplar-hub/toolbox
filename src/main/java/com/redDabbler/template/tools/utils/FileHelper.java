@@ -20,9 +20,7 @@ public class FileHelper {
      */
     public static InputStream getInputStream(String filePath)throws FileNotFoundException {
         File file = new File(filePath);
-        if (!file.exists()){
-            throw new FileNotFoundException();
-        }
+        checkExists(file);
         if(file.isDirectory()){
             throw new IllegalArgumentException("file is Directory");
         }
@@ -64,9 +62,7 @@ public class FileHelper {
      * @return
      */
     public static List<File> listFiles(File file)throws FileNotFoundException{
-        if (!file.exists()){
-            throw new FileNotFoundException();
-        }
+        checkExists(file);
         List<File> files = new ArrayList();
         recursionFiles(file,files);
         return files;
@@ -87,6 +83,48 @@ public class FileHelper {
             recursionFiles(tmpFile,resultFile);
         }
     }
+
+
+    public static List<String> readFileLines(File file)throws FileNotFoundException{
+        checkExists(file);
+        if(checkDirectory(file)){
+            throw new IllegalArgumentException();
+        }
+
+        List<String> lines = new ArrayList<String>();
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        String line = null;
+        try {
+            while((line=bufferedReader.readLine())!=null){
+                lines.add(line);
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }finally {
+            if (bufferedReader!=null) {
+                try {
+                    bufferedReader.close();
+                    bufferedReader = null;
+                } catch (IOException e) {
+                    bufferedReader = null;
+                }
+            }
+        }
+        return lines;
+    }
+
+
+    private static boolean checkExists(File file)throws FileNotFoundException{
+        if (!file.exists()){
+            throw new FileNotFoundException();
+        }
+        return true;
+    }
+
+    private static boolean checkDirectory(File file){
+        return file.isDirectory();
+    }
+
 
 
     public static Path getRelativePath(File srcFile,File descFile){
