@@ -3,6 +3,7 @@ package com.redDabbler.template.tools.utils;
 import java.io.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -61,10 +62,10 @@ public class FileHelper {
      * @param file
      * @return
      */
-    public static List<File> listFiles(File file)throws FileNotFoundException{
+    public static List<File> listFiles(File file,FileFilter fileFilter)throws FileNotFoundException{
         checkExists(file);
         List<File> files = new ArrayList();
-        recursionFiles(file,files);
+        recursionFiles(file,files,fileFilter);
         return files;
     }
 
@@ -73,18 +74,24 @@ public class FileHelper {
      * @param file
      * @param resultFile
      */
-    private static void recursionFiles(File file,List<File>resultFile){
+    private static void recursionFiles(File file,List<File>resultFile,FileFilter fileFilter){
         if (file.isFile()){
             resultFile.add(file);
             return;
         }
-        File[] files = file.listFiles();
+        File[] files = file.listFiles(fileFilter);
         for(File tmpFile:files){
-            recursionFiles(tmpFile,resultFile);
+            recursionFiles(tmpFile,resultFile,fileFilter);
         }
     }
 
 
+    /**
+     * 读出文件内容
+     * @param file
+     * @return
+     * @throws FileNotFoundException
+     */
     public static List<String> readFileLines(File file)throws FileNotFoundException{
         checkExists(file);
         if(checkDirectory(file)){
@@ -112,6 +119,32 @@ public class FileHelper {
         }
         return lines;
     }
+
+    /**
+     * 获取修改日期再某段时间内的文件
+     * @param file
+     * @param startTime
+     * @param endTime
+     * @return
+     * @throws FileNotFoundException
+     */
+    public static List<File> listModifyFile(File file,final Date startTime, final Date endTime)throws FileNotFoundException{
+
+        FileFilter dateFilter = new FileFilter() {
+            @Override
+            public boolean accept(File pathname) {
+                long modifyTime = pathname.lastModified();
+                long st = startTime.getTime();
+                long et = endTime.getTime();
+                if(modifyTime >= st && modifyTime <= et){
+                    return true;
+                }
+                return false;
+            }
+        };
+        return listFiles(file,dateFilter);
+    }
+
 
 
     private static boolean checkExists(File file)throws FileNotFoundException{
