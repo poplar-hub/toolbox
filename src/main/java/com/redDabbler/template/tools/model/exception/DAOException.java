@@ -1,4 +1,4 @@
 package com.redDabbler.template.tools.model.exception;
 
-public class DAOException {
+public class DAOException extends Throwable {
 }

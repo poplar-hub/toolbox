@@ -14,6 +14,11 @@ public class BeanHelper {
         throw new UnsupportedOperationException();
     }
 
+    /**
+     * 转map
+     * @param object
+     * @return
+     */
     public static Map<String,Object> descibe(Object object){
         if (object instanceof Map){
             return (Map)object;
