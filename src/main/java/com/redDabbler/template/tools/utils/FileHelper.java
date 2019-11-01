@@ -147,9 +147,9 @@ public class FileHelper {
 
 
 
-    private static boolean checkExists(File file)throws FileNotFoundException{
+    private static boolean checkExists(File file){
         if (!file.exists()){
-            throw new FileNotFoundException();
+            return false;
         }
         return true;
     }
@@ -164,5 +164,18 @@ public class FileHelper {
         Path srcPath = srcFile.toPath();
         Path descPath = descFile.toPath();
         return descPath.relativize(srcPath);
+    }
+
+    public static void createFileIfNotExists(String path){
+        File file = new File(path);
+        boolean  flag =  checkExists(file);
+        if (flag) return ;
+        try{
+            File parentDir = file.getCanonicalFile().getParentFile();
+            parentDir.mkdirs();
+            file.createNewFile();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }
