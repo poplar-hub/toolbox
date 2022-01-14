@@ -3,6 +3,7 @@ package com.redDabbler.template.tools.utils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 /**
  * @author redDabbler
@@ -32,6 +33,22 @@ public class JDBCUtils {
         }
         try {
             Connection connection = DriverManager.getConnection(url,userName,password);
+            return connection;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public static Connection getConnect(String driverClass, String url, Properties properties){
+        try {
+            Class.forName(driverClass);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            Connection connection = DriverManager.getConnection(url,properties);
             return connection;
         } catch (SQLException e) {
             e.printStackTrace();

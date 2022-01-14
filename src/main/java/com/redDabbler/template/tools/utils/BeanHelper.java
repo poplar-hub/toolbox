@@ -47,6 +47,7 @@ public class BeanHelper {
         try {
             beanInfo = Introspector.getBeanInfo(beanClass);
         } catch (IntrospectionException e) {
+            e.printStackTrace();
             return (new PropertyDescriptor[0]);
         }
         PropertyDescriptor[] descriptors = beanInfo.getPropertyDescriptors();

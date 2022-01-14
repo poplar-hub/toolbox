@@ -7,8 +7,4 @@ public class OkHttpUtils {
 
     }
 
-//    public void post(){
-//        OkHttpClient client = new OkHttpClient();
-//        client.c
-//    }
 }
