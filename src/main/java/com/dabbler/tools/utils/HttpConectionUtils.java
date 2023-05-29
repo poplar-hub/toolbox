@@ -1,4 +1,4 @@
-package com.redDabbler.template.tools.utils;
+package com.dabbler.tools.utils;
 
 public class HttpConectionUtils {
 

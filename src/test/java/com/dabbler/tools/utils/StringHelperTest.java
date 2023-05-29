@@ -1,11 +1,9 @@
-package com.redDabbler.template.tools.utils;
+package com.dabbler.tools.utils;
 
 import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.junit.Assert.*;
 
 public class StringHelperTest {
 

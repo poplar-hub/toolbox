@@ -1,4 +1,4 @@
-package com.redDabbler.template.tools.domain;
+package com.dabbler.tools.domain;
 
 /**
  * @author RedDabbler

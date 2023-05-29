@@ -1,4 +1,4 @@
-package com.redDabbler.template.tools.utils;
+package com.dabbler.tools.utils;
 
 import java.beans.BeanInfo;
 import java.beans.IntrospectionException;

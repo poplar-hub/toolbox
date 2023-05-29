@@ -1,10 +1,7 @@
-package com.redDabbler.template.tools.utils;
+package com.dabbler.tools.utils;
 
 import com.alibaba.fastjson.JSONObject;
-import org.junit.Ignore;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class HttpClientUtilsTest {
 
