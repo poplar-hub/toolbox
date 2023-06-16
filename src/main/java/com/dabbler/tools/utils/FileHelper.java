@@ -132,6 +132,9 @@ public class FileHelper {
 
 
     public static String readFileString(File file) throws FileNotFoundException {
+        if (!file.exists()) {
+            throw new FileNotFoundException(file.getPath());
+        }
         List<String> lines = readFileLines(file);
         StringBuilder total = new StringBuilder("");
         lines.forEach(line->{
