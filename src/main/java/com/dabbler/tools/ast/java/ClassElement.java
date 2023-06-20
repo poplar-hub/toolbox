@@ -1,5 +1,6 @@
 package com.dabbler.tools.ast.java;
 
+import com.dabbler.tools.utils.ConstantValue;
 import lombok.Data;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class ClassElement extends AbstractJavaElement{
 
 
 
+    private Modifier modifier;
     private ClassTypeElement extend;
     private List<ClassTypeElement> implementList;
     private List<FieldElement> fieldElements;
@@ -22,4 +24,16 @@ public class ClassElement extends AbstractJavaElement{
     private List<MethodElement> methodElements;
 
 
+    @Override
+    protected String getFormattedContent() {
+
+        StringBuilder stringBuilder =new StringBuilder();
+
+        stringBuilder.append(modifier.getCode()).append(ConstantValue.INDENT);
+        appendStatic(stringBuilder);
+        appendFinal(stringBuilder);
+        stringBuilder.append(ConstantValue.CLASS).append(ConstantValue.INDENT)
+                .append(name).;
+        return null;
+    }
 }

@@ -27,4 +27,8 @@ public enum Modifier {
         }
         throw new IllegalArgumentException("不存在的code:"+code);
     }
+
+    public String getCode() {
+        return code;
+    }
 }

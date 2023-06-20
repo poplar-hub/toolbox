@@ -7,6 +7,10 @@ package com.dabbler.tools.ast.java;
  */
 public class ClassTypeElement extends AbstractJavaElement{
 
-    private String shortName;
     private String fullQualifiedName;
+
+    @Override
+    protected String getFormattedContent() {
+        return name;
+    }
 }
