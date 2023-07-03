@@ -11,4 +11,9 @@ public class FieldElement extends AbstractJavaElement{
     private ClassTypeElement clz;
     private boolean isTransient;
     private boolean isVolatile;
+
+    @Override
+    protected String getFormattedContent() {
+        return null;
+    }
 }

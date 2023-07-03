@@ -8,4 +8,9 @@ package com.dabbler.tools.ast.java;
 public class ImportTypeDeclaration extends AbstractJavaElement{
 
     private Class clz;
+
+    @Override
+    protected String getFormattedContent() {
+        return null;
+    }
 }

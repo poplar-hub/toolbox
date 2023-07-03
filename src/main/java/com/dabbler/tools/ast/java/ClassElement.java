@@ -33,7 +33,7 @@ public class ClassElement extends AbstractJavaElement{
         appendStatic(stringBuilder);
         appendFinal(stringBuilder);
         stringBuilder.append(ConstantValue.CLASS).append(ConstantValue.INDENT)
-                .append(name).;
+                .append(name);
         return null;
     }
 }
