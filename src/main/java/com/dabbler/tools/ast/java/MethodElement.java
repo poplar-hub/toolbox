@@ -1,7 +1,10 @@
 package com.dabbler.tools.ast.java;
 
-import com.dabbler.tools.utils.ConstantValue;
+import com.dabbler.tools.ast.java.constant.Reserve;
+import static com.dabbler.tools.utils.ConstantValue.*;
 import lombok.Data;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,7 +14,7 @@ import java.util.stream.Collectors;
  * @version 1.0
  * @date 2023/6/16
  */
-@Data
+
 public class MethodElement extends AbstractJavaElement{
 
 
@@ -26,6 +29,10 @@ public class MethodElement extends AbstractJavaElement{
     private List<String> body;
 
 
+    public MethodElement(String name){
+        super(name);
+    }
+
 
     @Override
     public String getFormattedContent() {
@@ -34,21 +41,24 @@ public class MethodElement extends AbstractJavaElement{
         appendStatic(stringBuilder);
         appendFinal(stringBuilder);
         if (isSynchronized){
-            stringBuilder.append(ConstantValue.SYNCHRONIZED).append(ConstantValue.INDENT);
+            stringBuilder.append(Reserve.SYNCHRONIZED).append(INDENT);
         }
         if (isNative){
-            stringBuilder.append(ConstantValue.NATIVE).append(ConstantValue.INDENT);
+            stringBuilder.append(Reserve.NATIVE).append(INDENT);
         }
         stringBuilder.append(returnType.getFormattedContent()).append(name).append("(")
                 .append(parameterElements.stream().map(ParameterElement::getFormattedContent).collect(Collectors.joining(",")))
-                .append(")").append(ConstantValue.INDENT)
-                .append(ConstantValue.THROWS).append(exceptionTypes.stream().map(ClassTypeElement::getFormattedContent).collect(Collectors.joining(",")));
+                .append(")").append(INDENT);
+        if (CollectionUtils.isNotEmpty(exceptionTypes)){
+            stringBuilder.append(Reserve.THROWS).append(exceptionTypes.stream().map(ClassTypeElement::getFormattedContent).collect(Collectors.joining(",")));
+        }
+
         if(isAbstract() || isNative){
             return stringBuilder.toString();
         }
-        stringBuilder.append("{").append("\n")
-                .append(body.stream().collect(Collectors.joining("\n"))).append("\n")
-                .append("}");
+        stringBuilder.append(OPENING_BRACE).append(LINE_BREAK)
+                .append(body.stream().collect(Collectors.joining(LINE_BREAK))).append(LINE_BREAK)
+                .append(CLOSING_BRACE);
         return stringBuilder.toString();
     }
 
@@ -56,10 +66,15 @@ public class MethodElement extends AbstractJavaElement{
     class ParameterElement extends AbstractJavaElement{
         private ClassTypeElement clz;
 
-         @Override
+        public ParameterElement(ClassTypeElement clz,String name) {
+            super(name);
+            this.clz = clz;
+        }
+
+        @Override
          public String getFormattedContent() {
 
-             return clz.getFormattedContent() + ConstantValue.INDENT + name;
+             return clz.getSimpleName() + INDENT + name;
          }
      }
 

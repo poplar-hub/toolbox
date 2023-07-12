@@ -1,6 +1,7 @@
 package com.dabbler.tools.ast.java;
 
 import com.dabbler.tools.ast.AbstractElement;
+import com.dabbler.tools.ast.java.constant.Reserve;
 import com.dabbler.tools.utils.ConstantValue;
 
 import java.lang.reflect.AnnotatedElement;
@@ -22,8 +23,9 @@ public abstract class AbstractJavaElement extends AbstractElement {
     private List<String> comments;
 
 
-    public AbstractJavaElement(){
+    public AbstractJavaElement(String name){
 
+        this.name = name;
     }
 
 
@@ -31,13 +33,13 @@ public abstract class AbstractJavaElement extends AbstractElement {
 
     public  void appendStatic(StringBuilder stringBuilder){
         if (isStatic){
-            stringBuilder.append(ConstantValue.STATIC).append(ConstantValue.INDENT);
+            stringBuilder.append(Reserve.STATIC).append(ConstantValue.INDENT);
         }
     }
 
     public void appendFinal(StringBuilder stringBuilder){
         if (isFinal){
-            stringBuilder.append(ConstantValue.FINAL).append(ConstantValue.INDENT);
+            stringBuilder.append(Reserve.FINAL).append(ConstantValue.INDENT);
         }
     }
 

@@ -15,8 +15,12 @@ public class AnonationElement extends AbstractJavaElement{
 
     private List<AnnotatedParameterizedType> annotatedParameterizedTypeList;
 
+    public AnonationElement(String name) {
+        super(name);
+    }
 
 
+    @Override
     protected String getFormattedContent() {
         return "@"+name;
     }

@@ -9,6 +9,10 @@ public class ImportTypeDeclaration extends AbstractJavaElement{
 
     private Class clz;
 
+    public ImportTypeDeclaration(String name) {
+        super(name);
+    }
+
     @Override
     protected String getFormattedContent() {
         return null;

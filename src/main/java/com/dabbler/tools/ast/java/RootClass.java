@@ -15,6 +15,7 @@ public class RootClass extends ClassElement {
     private List<ClassElement> classElements;
 
 
-
-
+    public RootClass(String name,Modifier modifier) {
+        super(name,modifier);
+    }
 }

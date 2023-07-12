@@ -12,7 +12,7 @@ public class JavaElementTest {
 
 
     public  void method(){
-        MethodElement methodElement = new MethodElement();
+        MethodElement methodElement = new MethodElement("set");
 
     }
     public void generatorEntity(){

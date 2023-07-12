@@ -13,21 +13,6 @@ import java.util.List;
 
 public class FileHelperTest {
 
-    @Test
-    public void getInputStream() {
-    }
-
-    @Test
-    public void recursionCreateIfNotExists() {
-    }
-
-    @Test
-    public void listFiles() {
-    }
-
-    @Test
-    public void readFileLines() {
-    }
 
     @Test
     public void listModifyFile() throws FileNotFoundException, ParseException, IOException {
@@ -38,7 +23,5 @@ public class FileHelperTest {
         }
     }
 
-    @Test
-    public void getRelativePath() {
-    }
+
 }
