@@ -33,6 +33,12 @@ public class MethodElement extends AbstractJavaElement{
         super(name);
     }
 
+    public MethodElement(String name,Modifier modifier,ClassTypeElement returnType,List<ParameterElement> parameterElements){
+        this(name);
+        this.modifier = modifier;
+        this.returnType = returnType;
+        this.parameterElements = parameterElements;
+    }
 
     @Override
     public String getFormattedContent() {
