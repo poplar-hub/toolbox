@@ -1,5 +1,8 @@
 package com.dabbler.tools.ast.java;
 
+import com.dabbler.tools.ast.java.constant.Reserve;
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * @author poplar-hub
  * @version 1.0
@@ -7,7 +10,6 @@ package com.dabbler.tools.ast.java;
  */
 public class ImportTypeDeclaration extends AbstractJavaElement{
 
-    private Class clz;
 
     public ImportTypeDeclaration(String name) {
         super(name);
@@ -15,6 +17,6 @@ public class ImportTypeDeclaration extends AbstractJavaElement{
 
     @Override
     protected String getFormattedContent() {
-        return null;
+        return Reserve.IMPORT + StringUtils.SPACE + name + ";" + StringUtils.LF;
     }
 }

@@ -21,4 +21,6 @@ public class Reserve {
 
     public static final String THROWS = "throws";
 
+    public static final String IMPORT = "import";
+
 }

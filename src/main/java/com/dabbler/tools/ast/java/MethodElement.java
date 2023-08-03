@@ -2,6 +2,8 @@ package com.dabbler.tools.ast.java;
 
 import com.dabbler.tools.ast.java.constant.Reserve;
 import static com.dabbler.tools.utils.ConstantValue.*;
+
+import lombok.Builder;
 import lombok.Data;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -15,6 +17,7 @@ import java.util.stream.Collectors;
  * @date 2023/6/16
  */
 
+@Builder
 public class MethodElement extends AbstractJavaElement{
 
 
@@ -29,16 +32,6 @@ public class MethodElement extends AbstractJavaElement{
     private List<String> body;
 
 
-    public MethodElement(String name){
-        super(name);
-    }
-
-    public MethodElement(String name,Modifier modifier,ClassTypeElement returnType,List<ParameterElement> parameterElements){
-        this(name);
-        this.modifier = modifier;
-        this.returnType = returnType;
-        this.parameterElements = parameterElements;
-    }
 
     @Override
     public String getFormattedContent() {

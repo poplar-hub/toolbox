@@ -1,5 +1,6 @@
 package com.dabbler.tools.ast.java;
 
+import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +18,8 @@ class MethodElementTest {
     @Test
     void getFormattedContent() {
         ClassTypeElement classTypeElement = new ClassTypeElement("com.dabbler.Lab");
-        MethodElement methodElement = new MethodElement("getName",Modifier.PUBLIC,classTypeElement,null);
+        MethodElement methodElement = MethodElement.builder().returnType(classTypeElement).modifier(Modifier.PUBLIC)
+                        .isSynchronized(false).parameterElements(Lists.newArrayList()).build();
         log.info("formattedContent {}",methodElement.getFormattedContent());
     }
 }

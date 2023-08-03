@@ -1,7 +1,8 @@
 package com.dabbler.tools.utils;
 
 import com.alibaba.fastjson.JSONObject;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+
 
 public class HttpClientUtilsTest {
 

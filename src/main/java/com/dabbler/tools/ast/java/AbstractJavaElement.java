@@ -22,6 +22,8 @@ public abstract class AbstractJavaElement extends AbstractElement {
     protected List<AnnotatedElement> anonationElementList;
     private List<String> comments;
 
+    public AbstractJavaElement(){}
+
 
     public AbstractJavaElement(String name){
 

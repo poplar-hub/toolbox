@@ -1,6 +1,5 @@
 package com.dabbler.tools.utils;
 
-import com.dabbler.tools.ast.java.MethodElement;
 
 /**
  * @author poplar
@@ -12,7 +11,6 @@ public class JavaElementTest {
 
 
     public  void method(){
-        MethodElement methodElement = new MethodElement("set");
 
     }
     public void generatorEntity(){
