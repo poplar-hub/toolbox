@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.junit.jupiter.api.Test;
 
 import java.sql.*;
 import java.util.Iterator;
@@ -155,12 +156,11 @@ public class ExcelToDbUtils {
 //              toInventory(row,month);
 
 //               List<ExpensesSummary> summaries= toExpensesSummary(row,type);
-//              String groupStr = row.getCell(0).getStringCellValue();
-//              if (StringUtils.isNotBlank(groupStr)){
-//                  group = groupStr;
-//              }
-//              List<Balance>   balances =    convertAndInsert(row,group,balanceType);
-//              result.addAll(balances);
+              if (StringUtils.isNotBlank(groupStr)){
+                  group = groupStr;
+              }
+              List<Balance>   balances =    convertAndInsert(row,group,balanceType);
+              result.addAll(balances);
            }
            log.info("解析{}完成",sheet.getSheetName());
         }
@@ -415,7 +415,7 @@ public class ExcelToDbUtils {
                 balance3.setEndDirection(cell.getStringCellValue());
             }
             if (index == 12) {
-                balance2.setEndAmount(cell.getNumericCellValue());
+                balance3.setEndAmount(cell.getNumericCellValue());
             }
 
 
@@ -454,12 +454,13 @@ public class ExcelToDbUtils {
     }
 
     public static void main(String[] args) throws Exception {
-      //  insertPay();
+     //  insertPay();
       // insertIncome();
       //  insertFee();
 
-        insertInventory();
+     //   insertInventory();
     }
+
 
 
 }
