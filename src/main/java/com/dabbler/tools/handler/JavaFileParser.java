@@ -23,12 +23,6 @@ public class JavaFileParser {
     public static List<ClassElement> getClassElement(String filePath) throws FileNotFoundException {
 
         List<String> lines = FileHelper.readFileLines(new File(filePath));
-
-//        for (String line:lines){
-//            if (StringUtils.contains(line, Reserve.CLASS)){
-//                line.
-//            }
-//        }
         return Lists.newArrayList();
     }
 }
