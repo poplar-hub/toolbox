@@ -63,7 +63,7 @@ public class ZipUtils {
      * @param destDir
      * @throws IOException
      */
-    public static void unzip(String zipFileName,String passwd,String destDir)  throws IOException {
+    public static void unzip(String zipFileName,String destDir)  throws IOException {
         try(ZipFile zipFile = new ZipFile(zipFileName,Charset.forName("GBK"))){
             ZipEntry zipEntry ;
             for(Enumeration<? extends ZipEntry> entryEnumeration = zipFile.entries();entryEnumeration.hasMoreElements();){

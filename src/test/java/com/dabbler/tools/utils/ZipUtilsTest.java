@@ -12,7 +12,7 @@ class ZipUtilsTest {
     void unzip() throws IOException {
         String zipFileName = "C:\\Users\\Administrator\\Desktop\\test.zip";
         String destDir="C:\\Users\\Administrator\\Desktop\\dest";
-        ZipUtils.unzip(zipFileName,"",destDir);
+        ZipUtils.unzip(zipFileName,destDir);
     }
 
     @Test
