@@ -12,7 +12,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.Properties;
 
 //https://gist.github.com/kang8/67e03361d8cf7658b1ea7c55084b2045
@@ -29,7 +28,7 @@ public class EmailUtils {
         Session session = Session.getDefaultInstance(props);
         IMAPStore store = (IMAPStore) session.getStore("imap");
         // 需要认证
-        store.connect(props.getProperty("mail.imap.host"), Integer.valueOf(props.getProperty("mail.imap.port","993")), props.getProperty("mail.imap.user"), props.getProperty("mail.imap.pass"));
+        store.connect(props.getProperty("mail.imap.host","imap.163.com"), Integer.valueOf(props.getProperty("mail.imap.port","993")), props.getProperty("mail.imap.user"), props.getProperty("mail.imap.pass"));
         // 解决报错： https://help.mail.163.com/faqDetail.do?code=d7a5dc8471cd0c0e8b4b8f4f8e49998b374173cfe9171305fa1ce630d7f67ac2eda07326646e6eb0
         // Unsafe Login. Please contact kefu@188.com for help
         HashMap IAM = new HashMap();
@@ -40,11 +39,9 @@ public class EmailUtils {
         IAM.put("support-email","testmail@xxx.com");
         store.id(IAM);
         return store;
-
     }
 
     public static Message getMailMessage(IMAPStore store) throws MessagingException, IOException {
-
         // 获取收件箱 store.getDefaultForlder
         Folder mbox = store.getFolder("账单");
         // INBOX

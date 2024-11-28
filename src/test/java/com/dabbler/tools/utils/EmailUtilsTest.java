@@ -19,13 +19,14 @@ class EmailUtilsTest {
         props.put("mail.imap.ssl", true);
         // 需要认证
         props.put("mail.imap.auth", true);
-        props.put("mail.imap.user", "xxxxx@163.com");
-        props.put("mail.imap.pass", "zxxxxx");
+        props.put("mail.imap.user", "xxxx@163.com");
+        props.put("mail.imap.pass", "xxxx");
         // 使用ssl
         props.put("mail.imap.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         IMAPStore store=  EmailUtils.connect(props);
         Message message = EmailUtils.getMailMessage(store);
 
-        EmailUtils.saveAttachment(message,"C:\\Users\\Administrator\\Desktop\\dest");
+        EmailUtils.parseContent(message);
+      //  EmailUtils.saveAttachment(message,"C:\\Users\\Administrator\\Desktop\\dest");
     }
 }

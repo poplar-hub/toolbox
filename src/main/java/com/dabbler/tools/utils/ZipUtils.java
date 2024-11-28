@@ -59,7 +59,6 @@ public class ZipUtils {
 
     /** 解压压缩文件
      * @param zipFileName
-     * @param passwd
      * @param destDir
      * @throws IOException
      */
@@ -83,6 +82,12 @@ public class ZipUtils {
 
         }
 
+    }
+
+    public static void unzip(String zipFileName,String passwd,String destDir)  throws IOException {
+        try(net.lingala.zip4j.ZipFile zipFile = new net.lingala.zip4j.ZipFile(zipFileName, passwd.toCharArray());){
+            zipFile.extractAll(destDir);
+        }
     }
 
 }
